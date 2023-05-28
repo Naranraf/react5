@@ -1,14 +1,23 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import axios from 'axios';
 import './App.css'
+import Login from './components/Login';
+import {
+  HashRouter,
+  Routes,
+  Route
+} from 'react-router-dom'
+
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <h1>Hola</h1>
-    </>
-  )
+    <HashRouter>
+      <Routes>
+        <Route path="/" element={<Login/>} />
+        
+      </Routes>
+    </HashRouter>
+  );
 }
 
 export default App
