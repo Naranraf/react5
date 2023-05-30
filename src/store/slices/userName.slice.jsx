@@ -5,10 +5,7 @@ export const username = createSlice({
     initialState: "Usuario",
     reducers: {
         changeName: state => {
-            return {
-                
-            }
-
+            return "Rafa"
         }
 
 
