@@ -1,24 +1,43 @@
-import { useState, useEffect } from 'react'
-import axios from 'axios';
-import './App.css'
-import Login from './components/Login';
-import Pokemons from './components/Pokemons';
-import {
-  HashRouter,
-  Routes,
-  Route
-} from 'react-router-dom'
 
+import { HashRouter, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import PokemonsList from "./pages/Pokedex";
+import Pokedex from "./pages/Pokedex";
+import MainLayout from "./components/MainLayout";
+import ProtectedRoutes from "./components/ProtectedRoutes";
 
 function App() {
+  //Home
+  //pokemons
+  //pokemon-detail
+
   return (
     <HashRouter>
+      <nav>navegacion</nav>
       <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path='/pokemons' element={<Pokemons />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/pokemons" element={<PokemonsList />} />
+
+
+
+        <Route
+          element={<MainLayout />}
+        >
+          <Route
+            path="/pokemons/:id"
+            element={<Pokedex />}
+          />
+        </Route>
+
+
+        <Route element={<ProtectedRoutes />}>
+          <Route path="/pokemons/:id" element={<Pokedex />} />
+        </Route>
       </Routes>
     </HashRouter>
   );
 }
 
-export default App
+export default App;
+
+
